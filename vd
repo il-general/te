@@ -1,15 +1,22 @@
 ssh -okexAlgorithms=+diffie-hellman-group14-sha1 -oHostkeyAlgorithms=+ssh-rsa admin@192.168.30.1
-
-
 root@ubuntu22-desktop:/home/ansible/project# ansible-playbook -i inventory.yml router_info.yml 
 
 PLAY [Get router info] *********************************************************************************
 
 TASK [Run command to get router info] ******************************************************************
-fatal: [router]: FAILED! => {"msg": "Using a SSH password instead of a key is not possible because Host Key checking is enabled and sshpass does not support this.  Please add this host's fingerprint to your known_hosts file to manage this host."}
+[WARNING]: Unhandled error in Python interpreter discovery for host router: unexpected output from
+Python interpreter discovery
+[WARNING]: sftp transfer mechanism failed on [192.168.30.1]. Use ANSIBLE_DEBUG=1 to see detailed
+information
+[WARNING]: scp transfer mechanism failed on [192.168.30.1]. Use ANSIBLE_DEBUG=1 to see detailed
+information
+[WARNING]: Platform unknown on host router is using the discovered Python interpreter at
+/usr/bin/python, but future installation of another Python interpreter could change the meaning of that
+path. See https://docs.ansible.com/ansible/2.10/reference_appendices/interpreter_discovery.html for
+more information.
+fatal: [router]: FAILED! => {"ansible_facts": {"discovered_interpreter_python": "/usr/bin/python"}, "changed": false, "module_stderr": "Shared connection to 192.168.30.1 closed.\r\n", "module_stdout": "\r\n\r\n\r\nLine has invalid autocommand \"/bin/sh -c '/usr/bin/python '\"'\"'Line has invalid autocommand \"/bin/sh -c '\"'\"'\"'\"'\"'\"'\"'\"'( umask 77 && mkdir -p \"` echo Line has invalid autocommand \"/bin/sh -c '\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'echo ~admin && sleep 0'\"'\"'\"'\"'\"'\"'\"'\"'\"", "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", "rc": 0}
 
 PLAY RECAP *********************************************************************************************
 router                     : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
 
 root@ubuntu22-desktop:/home/ansible/project# 
-
