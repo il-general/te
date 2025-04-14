@@ -1,0 +1,1 @@
+ssh -okexAlgorithms=+diffie-hellman-group14-sha1 -oHostkeyAlgorithms=+ssh-rsa admin@192.168.30.1
