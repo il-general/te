@@ -12,3 +12,6 @@
         weekday: "*"
         job: "/usr/bin/ansible-playbook /home/ansible/project/router-config.yml -i /home/ansible/project/inventory.yml >> /var/log/router_backup.log 2>&1"
         user: ansible
+ # the command to run 
+ # ansible-playbook schedule_cron.yml
+
