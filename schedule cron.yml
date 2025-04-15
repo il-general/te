@@ -1,0 +1,14 @@
+---
+- name: Schedule monthly router config backup
+  hosts: localhost
+  tasks:
+    - name: Create cron job for router-config playbook
+      ansible.builtin.cron:
+        name: "Monthly router config backup"
+        minute: "0"
+        hour: "0"
+        day: "1"
+        month: "*"
+        weekday: "*"
+        job: "/usr/bin/ansible-playbook /home/ansible/project/router-config.yml -i /home/ansible/project/inventory.yml >> /var/log/router_backup.log 2>&1"
+        user: ansible
